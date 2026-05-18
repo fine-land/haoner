@@ -2,12 +2,13 @@
 Prompt Builder - 构建完整的 Agent 提示词
 
 包含:
-1. System Prompt - 角色定义和核心指令
+1. System Prompt - 角色定义和核心指令 (adapted from Claude Code)
 2. Tool Information - 工具使用说明
 3. Format Instructions - 输出格式要求
 """
 
 import json
+import os
 from typing import List, Dict, Any, Optional
 
 
@@ -19,33 +20,9 @@ class PromptBuilder:
         self.tool_instructions = ""
 
     def _get_default_system_prompt(self) -> str:
-        """获取默认的系统提示词"""
-        return """你是 Haoner，一个强大的 AI 助手。
-
-## 核心指令
-
-1. **仔细分析用户请求**：理解用户的意图和需求
-2. **选择合适的工具**：如果需要获取信息或执行操作，使用提供的工具
-3. **提供详细回复**：工具执行完成后，用自然语言总结结果
-4. **保持对话连贯性**：记住对话历史，保持上下文一致
-
-## 输出格式
-
-### 直接回答
-如果不需要调用工具，直接用自然语言回答。
-
-### 工具调用
-如果需要调用工具，请使用 JSON 格式：
-<function_calls>
-[{"name": "工具名称", "parameters": {"参数名": "值"}}]
-</function_calls>
-
-## 注意事项
-
-- 只能使用提供的工具
-- 工具参数必须正确匹配
-- 如果工具执行失败，尝试其他方法或告知用户
-"""
+        """获取默认的系统提示词 - adapted from Claude Code"""
+        from .system_prompt import get_system_prompt_string
+        return get_system_prompt_string(os.getcwd())
 
     def build_tool_instructions(self, tools: List[Dict[str, Any]]) -> str:
         """构建工具使用说明"""

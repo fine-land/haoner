@@ -9,6 +9,7 @@ __pycache__/
 *.pyo
 *.pyd
 .Python
+*.pyi
 
 # Virtual environment
 venv/
@@ -28,6 +29,7 @@ env/
 .tox/
 .coverage
 htmlcov/
+.ruff_cache/
 
 # Log files
 *.log
@@ -44,3 +46,4 @@ build/
 
 # Misc
 .cache/
+.mypy_cache/
