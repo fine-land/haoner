@@ -1,0 +1,10 @@
+#!/bin/bash
+# Haoner CLI launcher script
+
+cd "$(dirname "$0")"
+
+# Activate virtual environment
+source venv/bin/activate
+
+# Run CLI with provided arguments
+python cli.py "$@"

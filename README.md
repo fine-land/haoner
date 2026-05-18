@@ -1,0 +1,165 @@
+# 🤖 HAONER - AI-Powered Agent
+
+> **⚠️ 纯 AI 开发警告 ⚠️**  
+> 此项目完全由 AI 开发完成，未经人类程序员审查。  
+> 代码质量、安全性和正确性需自行验证。
+
+---
+
+## 🌟 项目简介
+
+**Haoner** 是一个基于 Anthropic API 构建的智能代理系统，支持工具调用、上下文压缩等高级功能。
+
+### 📋 当前特性
+
+| 功能 | 状态 | 说明 |
+|------|------|------|
+| Anthropic API 集成 | ✅ 已完成 | 支持 DeepSeek Anthropic 兼容接口 |
+| 工具调用 | ✅ 已完成 | 支持 terminal 等工具 |
+| 上下文压缩 | ✅ 已完成 | 五种压缩技术优化长对话 |
+| 彩色 CLI | ✅ 已完成 | 美观的终端界面 |
+| Mock 模式 | ✅ 已完成 | 支持离线测试 |
+
+### 🚀 未来规划
+
+- [ ] 支持更多工具（文件操作、网络请求等）
+- [ ] 添加记忆系统
+- [ ] 支持多轮对话总结
+- [ ] 集成向量数据库
+- [ ] 添加 Web UI 界面
+- [ ] 支持多模型切换
+
+---
+
+## 🛠️ 快速开始
+
+### 环境要求
+
+- Python 3.11+
+- Anthropic API 密钥（或 DeepSeek Anthropic 兼容 API）
+
+### 安装步骤
+
+```bash
+# 克隆项目
+git clone <repository-url>
+cd haoner
+
+# 创建虚拟环境
+python -m venv venv
+source venv/bin/activate
+
+# 安装依赖
+pip install anthropic openai
+```
+
+### 配置说明
+
+1. 复制示例配置文件：
+```bash
+cp .env.example .env
+```
+
+2. 编辑 `.env` 文件，填入你的 API 密钥：
+```bash
+# .env 文件内容
+LLM_PROVIDER=anthropic
+API_KEY=your-api-key-here
+API_BASE=https://api.deepseek.com/anthropic
+MODEL=deepseek-v4-pro
+```
+
+### 启动方式
+
+```bash
+# 交互式聊天
+./haoner chat
+
+# 单查询模式
+./haoner chat -q "你的名字是什么？"
+
+# 查看可用工具
+./haoner chat --list-tools
+
+# 查看版本
+./haoner version
+```
+
+---
+
+## 📁 项目结构
+
+```
+haoner/
+├── haoner              # 启动脚本
+├── cli.py              # 命令行界面
+├── main.py             # 主入口
+├── .env                # 环境配置
+├── .env.example        # 配置示例
+├── .gitignore          # Git 忽略规则
+├── venv/               # 虚拟环境
+├── agent/              # 核心代理模块
+│   ├── agent_loop.py       # Agent 循环逻辑
+│   ├── anthropic_client.py # Anthropic 客户端
+│   ├── context_compression.py # 上下文压缩
+│   ├── prompt_builder.py   # 提示词构建
+│   └── llm_factory.py      # LLM 工厂
+└── tools/              # 工具模块
+    ├── model_tools.py      # 工具定义
+    └── registry.py         # 工具注册
+```
+
+---
+
+## 📝 使用示例
+
+### 交互式聊天
+```
+╔════════════════════════════════════════════════════════════════╗
+║                      HAONER - AI Agent CLI                      ║
+╚════════════════════════════════════════════════════════════════╝
+
+💡 Type "exit" or "quit" to quit
+
+You: 你好！
+🔄 Thinking...
+
+Haoner: 你好！👋 我是 Haoner，你的 AI 助手。有什么我可以帮你的吗？
+```
+
+### 执行命令
+```
+You: 运行命令 ls -l
+🔄 Thinking...
+
+Haoner: 执行命令: ls -l
+工具执行结果:
+total 40
+-rwxr-xr-x  1 user  group  1024 May 18 10:00 haoner
+-rw-r--r--  1 user  group  2048 May 18 10:00 cli.py
+...
+```
+
+---
+
+## 🔧 配置选项
+
+| 环境变量 | 说明 | 默认值 |
+|----------|------|--------|
+| `LLM_PROVIDER` | LLM 提供商 | `anthropic` |
+| `API_KEY` | API 密钥 | - |
+| `API_BASE` | API 基础 URL | `https://api.anthropic.com` |
+| `MODEL` | 模型名称 | `claude-sonnet-4-20250514` |
+| `MAX_TOKENS` | 最大令牌数 | `8192` |
+| `TEMPERATURE` | 温度参数 | `1.0` |
+| `MAX_TURNS` | 最大对话轮数 | `30` |
+
+---
+
+## 📄 许可证
+
+MIT License
+
+---
+
+*Built with 🤖 AI*

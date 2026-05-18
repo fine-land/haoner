@@ -1,0 +1,46 @@
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Python compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environment
+venv/
+.env/
+.venv/
+env/
+
+# IDE configurations
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Test files and cache
+.pytest_cache/
+.tox/
+.coverage
+htmlcov/
+
+# Log files
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Misc
+.cache/
